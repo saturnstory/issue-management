@@ -3,7 +3,6 @@ package com.proton.issuemanagement.service.impl;
 import java.util.Arrays;
 
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -53,8 +52,16 @@ public class IssueServiceImpl implements IssueService{
 	}
 
 	@Override
-	public Boolean delete(IssueDto issue) {
-		// TODO Auto-generated method stub
+	public Boolean delete(Long id) {
+		issueRepository.deleteById(id);
+		return true;
+	}
+
+	@Override
+	public IssueDto update(Long id, IssueDto issue) {
+		
+		
+		
 		return null;
 	}
 	
