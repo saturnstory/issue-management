@@ -1,9 +1,14 @@
 package com.proton.issuemanagement.service.impl;
 
+import java.util.Arrays;
+import java.util.List;
+
+import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import com.proton.issuemanagement.dto.IssueHistoryDto;
 import com.proton.issuemanagement.entity.IssueHistory;
 import com.proton.issuemanagement.repository.IssueHistoryRepository;
 import com.proton.issuemanagement.service.IssueHistoryService;
@@ -12,9 +17,11 @@ import com.proton.issuemanagement.service.IssueHistoryService;
 public class IssueHistoryServiceImpl implements IssueHistoryService {
 	
 	private final IssueHistoryRepository issueHistoryRepository;
+	private final ModelMapper modelMapper;
 	
-	public IssueHistoryServiceImpl(IssueHistoryRepository issueHistoryRepository) {
+	public IssueHistoryServiceImpl(IssueHistoryRepository issueHistoryRepository, ModelMapper modelMapper) {
 		this.issueHistoryRepository = issueHistoryRepository;
+		this.modelMapper = modelMapper;
 	}
 
 	@Override
@@ -42,5 +49,10 @@ public class IssueHistoryServiceImpl implements IssueHistoryService {
 	public Boolean delete(IssueHistory issueHistory) {
 		return null;
 	}
+	
+    @Override
+    public List<IssueHistoryDto> getByIssueId(Long id) {
+        return Arrays.asList(modelMapper.map(issueHistoryRepository.getByIssueIdOrderById(id), IssueHistoryDto[].class));
+    }
 
 }

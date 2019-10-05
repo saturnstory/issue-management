@@ -11,4 +11,8 @@ public final class ApiPaths {
 		public static final String CTRL = BASE_PATH+"/project";
 	}
 	
+	public static final class UsersCtrl{
+		public static final String CTRL = BASE_PATH+"/users";
+	}
+	
 }

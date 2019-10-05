@@ -1,17 +1,23 @@
 package com.proton.issuemanagement.service;
 
-import org.springframework.data.domain.Page;
+import java.util.List;
+
 import org.springframework.data.domain.Pageable;
 
-import com.proton.issuemanagement.entity.User;
+import com.proton.issuemanagement.dto.UserDto;
+import com.proton.issuemanagement.util.TPage;
 
 public interface UserService {
 	
-	User save(User user);
+	UserDto save(UserDto userDto);
 	
-	User getById(Long id);
+	UserDto getById(Long id);
 	
-	Page<User> getAllPageable(Pageable pageable);
+	TPage<UserDto> getAllPageable(Pageable pageable);
 	
-	User getByUserName(String username);
+	UserDto getByUserName(String username);
+	
+	List<UserDto> getAll();
+	
+	
 }

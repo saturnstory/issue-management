@@ -1,5 +1,7 @@
 package com.proton.issuemanagement.dto;
 
+import javax.validation.constraints.NotNull;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
@@ -14,8 +16,13 @@ public class UserDto {
 
 	@ApiModelProperty(required = true, value = "ID")
 	private Long id;
+	
+	
 	@ApiModelProperty(required = true, value = "Name Surname")
+	@NotNull
 	private String nameSurname;
+	
 	@ApiModelProperty(required = true, value = "E-Mail")
+	@NotNull
 	private String email;
 }
